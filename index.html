@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cyclex | Ueber uns</title>
+    <title>Cyclex Auswertung</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/x-icon" href="Bilder/Logo_Cyclex.png" />
     <link
@@ -12,12 +12,15 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
     <style>
       body {
         font-family: Arial, Helvetica, sans-serif;
         background: linear-gradient(180deg, #f7f8fb 0%, #eef1f7 45%, #ffffff 100%);
         padding-top: 80px;
         color: #1f2a3d;
+        scroll-behavior: smooth;
       }
       .navbar-custom {
         background-color: #7b0f1c;
@@ -64,32 +67,45 @@
         font-weight: 800;
         letter-spacing: 0.01em;
       }
-      .section-heading {
-        font-weight: 800;
-        letter-spacing: 0.01em;
-      }
-      .team-card img {
-        object-fit: cover;
-        aspect-ratio: 1 / 1;
-        border-top-left-radius: 12px;
-        border-top-right-radius: 12px;
-      }
-      .team-card {
-        border: none;
-        border-radius: 12px;
-        background-color: #ffffff;
-        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-      .team-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
-      }
-      .content-block {
-        background-color: #ffffff;
+      .content-card {
+        font-family: "Times New Roman", Times, serif;
+        font-size: medium;
+        text-align: center;
         border-radius: 14px;
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-        padding: 2rem;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+        background-color: #ffffff;
+        border: 1px solid #f0f1f5;
+      }
+      .leiste {
+        position: relative;
+        width: 100%;
+        height: 12px;
+        background: linear-gradient(
+          to right,
+          darkred,
+          #f6c343,
+          lightgreen,
+          #f6c343,
+          darkred
+        );
+        margin: 10px auto;
+        border-radius: 6px;
+      }
+      .marker {
+        position: absolute;
+        top: -6px;
+        width: 4px;
+        height: 24px;
+        background-color: black;
+        transition: left 0.2s ease;
+      }
+      input[type="number"] {
+        width: 110px;
+        padding: 4px;
+        font-size: 1rem;
+      }
+      table thead td {
+        font-weight: 700;
       }
     </style>
   </head>
@@ -115,13 +131,7 @@
                 </button>
                 <ul class="dropdown-menu" style="font-size: medium">
                   <li>
-                    <a
-                      class="nav-link"
-                      href="Impressum.html"
-                      onclick="openProtectedLink(event, 'Impressum.html')"
-                      style="color: black"
-                      >Auswertung</a
-                    >
+                    <a class="nav-link" href="#rechner" style="color: black">Auswertung</a>
                   </li>
                   <li>
                     <a
@@ -139,6 +149,15 @@
                       onclick="openProtectedLink(event, 'Quellen.html')"
                       style="color: black"
                       >Quellen</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="nav-link"
+                      href="Impressum.html"
+                      onclick="openProtectedLink(event, 'Impressum.html')"
+                      style="color: black"
+                      >Ueber uns</a
                     >
                   </li>
                   <li>
@@ -171,131 +190,385 @@
                 einen klaren Blick auf Blutwerte. Detaillierte Visualisierungen
                 machen komplexe Themen leichter greifbar.
               </p>
-              <span class="badge bg-light text-dark fs-6">Rote Blutkoerperchen im Fokus</span>
+              <a class="btn btn-light text-dark fw-semibold" href="#rechner">Zum Rechner</a>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="container-xxl pb-5">
-        <h2 class="text-center section-heading mb-4">Unser Team</h2>
-        <div
-          class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4 justify-content-center"
-        >
-          <div class="col d-flex">
-            <div class="card team-card text-center flex-fill">
-              <img
-                class="card-img-top img-fluid"
-                src="Bilder/Dominik.jpg"
-                alt="Dominik Artinger"
-              />
-              <div class="card-body">
-                <h6 class="mb-1">Dominik Artinger</h6>
-                <p class="small text-muted mb-0">Projektleiter</p>
-              </div>
-            </div>
-          </div>
-          <div class="col d-flex">
-            <div class="card team-card text-center flex-fill">
-              <img
-                src="Bilder/Thomas.jpg"
-                alt="Thomas Hanninger"
-                class="card-img-top img-fluid"
-              />
-              <div class="card-body">
-                <h6 class="mb-1">Thomas Hanninger</h6>
-                <p class="small text-muted mb-0">
-                  Website Design und Implementierung
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col d-flex">
-            <div class="card team-card text-center flex-fill">
-              <img
-                src="Bilder/Dorian.jpg"
-                alt="Dorian Sinno"
-                class="card-img-top img-fluid"
-              />
-              <div class="card-body">
-                <h6 class="mb-1">Dorian Sinno</h6>
-                <p class="small text-muted mb-0">
-                  Logik und Script Planung und Implementierung
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col d-flex">
-            <div class="card team-card text-center flex-fill">
-              <img
-                src="Bilder/Moritz.jpg"
-                alt="Moritz Lembaecker"
-                class="card-img-top img-fluid"
-              />
-              <div class="card-body">
-                <h6 class="mb-1">Moritz Lembaecker</h6>
-                <p class="small text-muted mb-0">Script Hilfe und Quellenfinder</p>
-              </div>
-            </div>
-          </div>
-          <div class="col d-flex">
-            <div class="card team-card text-center flex-fill">
-              <img
-                src="Bilder/Emily.jpg"
-                alt="Emily Falcic"
-                class="card-img-top img-fluid"
-              />
-              <div class="card-body">
-                <h6 class="mb-1">Emily Falcic</h6>
-                <p class="small text-muted mb-0">Website Hilfe und Quellenfinder</p>
-              </div>
-            </div>
+      <section id="rechner" class="container p-4 content-card mb-4">
+        <div class="col-lg-12">
+          <h3>Geschlecht auswaehlen</h3>
+          <label class="me-3">
+            <input type="radio" name="geschlecht" value="m" id="mbutton" />
+            Maennlich
+          </label>
+          <label>
+            <input type="radio" name="geschlecht" id="wbutton" value="w" />
+            Weiblich
+          </label>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <table class="table align-middle mb-4" style="border-color: white">
+              <thead>
+                <td class="col-md-4">Wert</td>
+                <td class="col-sm-1">Untergrenze</td>
+                <td class="col-sm-1">Obergrenze</td>
+                <td class="col-md-3">Ihr Wert</td>
+                <td class="col-md-3">Skala</td>
+              </thead>
+              <tbody id="werte-tbody"></tbody>
+            </table>
           </div>
         </div>
+        <p class="text-muted mb-0 small">
+          Bitte Geschlecht waehlen, Werte eintragen und Auswertung ansehen oder als PDF speichern.
+        </p>
       </section>
 
-      <section class="container-xxl pb-5">
-        <div class="content-block">
-          <h2 class="section-heading mb-3">Unser Teamgedanke</h2>
-          <p>
-            Wir sind ein Schuelerteam, das gemeinsam am Projekt "Cyclex" arbeitet.
-            In unserem Projekt beschaeftigen wir uns mit dem Blut und seiner
-            Bedeutung fuer den menschlichen Koerper. Unser Ziel ist es,
-            verstaendlich zu erklaeren, welche Bestandteile das Blut hat, welche
-            Aufgaben es uebernimmt und wie es unseren Koerper und Alltag
-            beeinflusst. Jedes Teammitglied uebernimmt unterschiedliche Aufgaben,
-            wie Recherche, Gestaltung der Website oder Aufbereitung der Inhalte,
-            damit wir ein anschauliches und informatives Projekt erstellen
-            koennen.
-          </p>
-          <h2 class="section-heading mb-3">Unsere Idee</h2>
-          <p class="mb-0">
-            Das allgemeine Verstaendnis von Blutwerten und Blutbildern ist oft
-            gering. Viele Menschen wissen zwar, dass Blutuntersuchungen wichtige
-            Informationen ueber die Gesundheit liefern, koennen die Werte aber
-            nicht richtig deuten. Deshalb entstand die Idee, Blutwerte
-            verstaendlich und uebersichtlich zu erklaeren. So kann leichter
-            nachvollzogen werden, was im Koerper passiert und warum bestimmte Werte
-            wichtig sind. Durch einfache Erklaerungen und anschauliche
-            Darstellungen sollen medizinische Themen nachvollziehbar und fuer alle
-            zugaenglich werden. Wir wollen nicht nur Hormone aus dem weiblichen
-            Zyklus erlaeutern, sondern auch andere Hormone, die im Alltag wichtig
-            sind.
-          </p>
+      <div class="container" style="padding: 1rem">
+        <div class="row align-items-center">
+          <div class="col-md-4 mb-3">
+            <button
+              id="download-btn"
+              class="btn btn-outline-dark w-100"
+              type="button"
+              style="font-size: medium; border-color: #7b0f1c; color: #7b0f1c"
+            >
+              Download PDF
+            </button>
+          </div>
+          <div class="col-md-8">
+            <canvas id="piechart" style="max-height: 280px"></canvas>
+          </div>
         </div>
-      </section>
+      </div>
     </main>
 
     <script>
       function openProtectedLink(event, targetpage) {
         event.preventDefault();
+
         const pw = prompt("Bitte Passwort eingeben:");
+
         if (pw === "cyclex123") {
           window.location.href = targetpage;
         } else {
           alert("Falsches Passwort!");
         }
       }
+
+      const tests = [
+        {
+          id: "rbc",
+          name: "Erythrozyten (RBC)",
+          unit: "Mio/ul",
+          range: { m: [4.5, 5.9], w: [4.1, 5.2] },
+        },
+        {
+          id: "hb",
+          name: "Haemoglobin (Hb)",
+          unit: "g/dl",
+          range: { m: [13, 17], w: [12, 16] },
+        },
+        {
+          id: "hkt",
+          name: "Haematokrit (Hkt)",
+          unit: "%",
+          range: { m: [42, 50], w: [37, 45] },
+        },
+        {
+          id: "mcv",
+          name: "MCV",
+          unit: "fl",
+          range: { m: [85, 98], w: [85, 98] },
+        },
+        {
+          id: "mch",
+          name: "MCH",
+          unit: "pg",
+          range: { m: [27, 34], w: [27, 34] },
+        },
+        {
+          id: "mchc",
+          name: "MCHC",
+          unit: "g/dl",
+          range: { m: [32, 36], w: [32, 36] },
+        },
+        {
+          id: "leuko",
+          name: "Leukozyten",
+          unit: "/ul",
+          range: { m: [4000, 10000], w: [4000, 10000] },
+        },
+        {
+          id: "thrombo",
+          name: "Thrombozyten",
+          unit: "/ul",
+          range: { m: [150000, 380000], w: [150000, 380000] },
+        },
+        {
+          id: "reti",
+          name: "Retikoluzyten",
+          unit: "/ul",
+          range: { m: [3, 18], w: [3, 18] },
+        },
+      ];
+
+      const tbody = document.getElementById("werte-tbody");
+      let pieChart;
+
+      function getGeschlecht() {
+        const checked = document.querySelector(
+          'input[name="geschlecht"]:checked'
+        );
+        return checked ? checked.value : "m";
+      }
+
+      function formatRange(range) {
+        return `${range[0]} - ${range[1]}`;
+      }
+
+      function renderRows() {
+        tbody.innerHTML = "";
+        tests.forEach((t) => {
+          const tr = document.createElement("tr");
+
+          const nameTd = document.createElement("td");
+          nameTd.innerHTML = `${t.name}<br /><small>${t.unit}</small>`;
+
+          const minTd = document.createElement("td");
+          minTd.id = `${t.id}-min`;
+
+          const maxTd = document.createElement("td");
+          maxTd.id = `${t.id}-max`;
+
+          const inputTd = document.createElement("td");
+          const inp = document.createElement("input");
+          inp.type = "number";
+          inp.step = "0.1";
+          inp.id = `${t.id}-input`;
+          inputTd.appendChild(inp);
+
+          const scaleTd = document.createElement("td");
+          const bar = document.createElement("div");
+          bar.className = "leiste";
+          const marker = document.createElement("div");
+          marker.className = "marker";
+          marker.id = `${t.id}-marker`;
+          bar.appendChild(marker);
+          scaleTd.appendChild(bar);
+
+          tr.appendChild(nameTd);
+          tr.appendChild(minTd);
+          tr.appendChild(maxTd);
+          tr.appendChild(inputTd);
+          tr.appendChild(scaleTd);
+
+          tbody.appendChild(tr);
+        });
+      }
+
+      function updateRanges() {
+        const g = getGeschlecht();
+        tests.forEach((t) => {
+          const range = t.range[g];
+          document.getElementById(`${t.id}-min`).innerText = range[0];
+          document.getElementById(`${t.id}-max`).innerText = range[1];
+        });
+      }
+
+      function statusForValue(val, range) {
+        if (isNaN(val)) return null;
+        if (val < range[0]) return "low";
+        if (val > range[1]) return "high";
+        return "normal";
+      }
+
+      function updateMarkers() {
+        const g = getGeschlecht();
+        tests.forEach((t) => {
+          const range = t.range[g];
+          const input = document.getElementById(`${t.id}-input`);
+          const marker = document.getElementById(`${t.id}-marker`);
+          const bar = marker.parentElement;
+
+          const val = parseFloat(input.value);
+          const status = statusForValue(val, range);
+
+          let ratio;
+          if (isNaN(val)) {
+            ratio = 0.5;
+          } else if (val <= range[0]) {
+            ratio = 0;
+          } else if (val >= range[1]) {
+            ratio = 1;
+          } else {
+            ratio = (val - range[0]) / (range[1] - range[0]);
+          }
+          marker.style.left = `${ratio * bar.offsetWidth}px`;
+
+          marker.style.backgroundColor =
+            status === "high" ? "red" : status === "low" ? "blue" : "black";
+        });
+      }
+
+      function buildChart() {
+        const ctx = document.getElementById("piechart");
+        pieChart = new Chart(ctx, {
+          type: "pie",
+          data: {
+            labels: ["Zu hoch", "Im gruenen Bereich", "Zu niedrig"],
+            datasets: [
+              {
+                backgroundColor: ["#d9534f", "#4caf50", "#0275d8"],
+                data: [0, 0, 0],
+              },
+            ],
+          },
+          options: {
+            plugins: {
+              legend: { display: true, position: "bottom" },
+              title: {
+                display: true,
+                text: "Deine Werte",
+                font: { size: 16 },
+              },
+            },
+          },
+        });
+      }
+
+      function updateChart() {
+        const g = getGeschlecht();
+        let high = 0,
+          normal = 0,
+          low = 0;
+        tests.forEach((t) => {
+          const range = t.range[g];
+          const val = parseFloat(
+            document.getElementById(`${t.id}-input`).value
+          );
+          const status = statusForValue(val, range);
+          if (status === "high") high++;
+          else if (status === "low") low++;
+          else if (status === "normal") normal++;
+        });
+        pieChart.data.datasets[0].data = [high, normal, low];
+        pieChart.update();
+      }
+
+      function initInputs() {
+        tests.forEach((t) => {
+          const input = document.getElementById(`${t.id}-input`);
+          input.addEventListener("input", () => {
+            updateMarkers();
+            updateChart();
+          });
+        });
+      }
+
+      function downloadPdf() {
+        const g = getGeschlecht() === "m" ? "Maennlich" : "Weiblich";
+        const bb =
+          document.querySelector('input[name="blutbild"]:checked')?.value ===
+          "g"
+            ? "Grosses Blutbild"
+            : "Kleines Blutbild";
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        let y = 15;
+        doc.setFontSize(16);
+        doc.text("Cyclex Blutwerte", 10, y);
+        y += 8;
+        doc.setFontSize(12);
+        doc.text(`Geschlecht: ${g}`, 10, y);
+        y += 6;
+        doc.text(`Blutbild: ${bb}`, 10, y);
+        y += 10;
+        doc.setFontSize(11);
+        doc.text("Wert (Einheit)", 10, y);
+        doc.text("Referenz", 80, y);
+        doc.text("Dein Wert", 130, y);
+        doc.text("Status", 170, y);
+        y += 5;
+        doc.line(10, y, 200, y);
+        y += 5;
+
+        const gKey = getGeschlecht();
+        tests.forEach((t) => {
+          const range = t.range[gKey];
+          const val = document.getElementById(`${t.id}-input`).value;
+          const num = parseFloat(val);
+          const status = statusForValue(num, range);
+          const statusText =
+            status === "high"
+              ? "Zu hoch"
+              : status === "low"
+              ? "Zu niedrig"
+              : status === "normal"
+              ? "Im Normbereich"
+              : "Kein Wert";
+
+          if (y > 280) {
+            doc.addPage();
+            y = 20;
+          }
+          doc.text(`${t.name} (${t.unit})`, 10, y);
+          doc.text(formatRange(range), 80, y);
+          doc.text(val || "-", 130, y);
+          doc.text(statusText, 170, y);
+          y += 7;
+        });
+
+        const counts = pieChart.data.datasets[0].data;
+        y += 5;
+        doc.line(10, y, 200, y);
+        y += 7;
+        doc.text(
+          `Zusammenfassung: Zu hoch ${counts[0]}, Normal ${counts[1]}, Zu niedrig ${counts[2]}`,
+          10,
+          y
+        );
+
+        doc.save("Cyclex-Blutwerte.pdf");
+      }
+
+      function setup() {
+        renderRows();
+        updateRanges();
+        initInputs();
+        buildChart();
+        updateMarkers();
+        updateChart();
+
+        document.querySelectorAll('input[name="geschlecht"]').forEach((r) =>
+          r.addEventListener("change", () => {
+            updateRanges();
+            updateMarkers();
+            updateChart();
+          })
+        );
+
+        document.querySelectorAll('input[name="blutbild"]').forEach((r) =>
+          r.addEventListener("change", () => {
+            updateMarkers();
+            updateChart();
+          })
+        );
+
+        document
+          .getElementById("download-btn")
+          .addEventListener("click", downloadPdf);
+      }
+
+      window.addEventListener("load", () => {
+        if (!document.querySelector('input[name="geschlecht"]:checked')) {
+          document.getElementById("mbutton").checked = true;
+        }
+        setup();
+      });
     </script>
   </body>
 </html>
