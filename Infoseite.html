@@ -1,419 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/x-icon" href="Bilder/Logo_Cyclex.png" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-      }
 
-      .flip-card {
-        width: 100%;
-        height: 550px;
-        perspective: 1000px;
-      }
+<head>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="Bilder/Logo_Cyclex.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-      .flip-card-inner {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        transition: transform 0.6s;
-        transform-style: preserve-3d;
-      }
+    .flip-card {
+      width: 100%;
+      height: 250px;
+      perspective: 1000px;
+    }
 
-      .flip-card:hover .flip-card-inner {
-        transform: rotateY(180deg);
-      }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
 
-      .flip-card-front,
-      .flip-card-back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-        box-sizing: border-box;
-      }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
 
-      .flip-card-front {
-        background-color: rgba(236, 236, 236, 0.95);
-        color: black;
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        text-align: center;
-        padding: 1.5rem;
-      }
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      box-sizing: border-box;
+    }
 
-      .flip-card-back {
-        background-color: lightcoral;
-        color: white;
-        transform: rotateY(180deg);
-        padding: 1.5rem;
-        text-align: left;
-        overflow-y: auto;
-      }
-      .row > div {
-        display: flex;
-      }
+    .flip-card-front {
+      background-color: rgba(236, 236, 236, 0.95);
+      color: black;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      text-align: center;
+      padding: 1.5rem;
+    }
 
-      .flip-card {
-        flex: 1;
-      }
-    </style>
-    <title>Cyclex Infos</title>
-  </head>
+    .flip-card-back {
+      background-color: lightcoral;
+      color: white;
+      transform: rotateY(180deg);
+      padding: 1.5rem;
+      text-align: left;
+      overflow-y: auto;
+    }
 
-  <body>
-    <nav
-      class="navbar navbar-expand-sm fixed-top"
-      style="background-color: darkred"
-    >
-      <div class="container-fluid" style="background-color: darkred">
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav w-100 flex-sm-row flex-column">
-            <li class="nav-item col-sm-1">
-              <img
-                src="Bilder/Logo_Cyclex.png"
-                alt="LOGO"
-                style="width: 50px; height: 50px; border-radius: 100%"
-              />
-            </li>
-            <li class="col-md-8" style="text-align: center; color: lightgray">
-              <h1>Cyclex</h1>
-            </li>
-            <li class="nav-item col-sm-2 p-2" style="text-align: center">
-              <div class="dropdown">
-                <button
-                  class="btn btn-primary dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  style="
+    .row>div {
+      display: flex;
+    }
+
+    .flip-card {
+      flex: 1;
+    }
+  </style>
+  <title>Cyclex Infos</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm fixed-top" style="background-color: darkred">
+    <div class="container-fluid" style="background-color: darkred">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 flex-sm-row flex-column">
+          <li class="nav-item col-sm-1">
+            <img src="Bilder/Logo_Cyclex.png" alt="LOGO" style="width: 50px; height: 50px; border-radius: 100%" />
+          </li>
+          <li class="col-md-8" style="text-align: center; color: lightgray">
+            <h1>Cyclex</h1>
+          </li>
+          <li class="nav-item col-sm-2 p-2" style="text-align: center">
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" style="
                     background-color: whitesmoke;
                     color: black;
                     border-color: white;
                     font-size: medium;
-                  "
-                >
-                  Menu
-                </button>
-                <ul class="dropdown-menu" style="font-size: medium">
-                  <li>
-                    <a class="nav-link" href="index.html" style="color: black">Auswertung</a>
-                  </li>
-                  <li>
-                    <a class="nav-link" href="Infoseite.html" style="color: black">Weitere Infos</a>
-                  </li>
-                  <li>
-                    <a class="nav-link" href="Quellen.html" style="color: black">Quellen</a>
-                  </li>
-                  <li>
-                    <a class="nav-link" href="Impressum.html" style="color: black">Impressum</a>
-                  </li>
-                  <li>
-                    <a class="nav-link" href="DSGVO.html" style="color: black">DSGVO</a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </div>
+                  ">
+                Menu
+              </button>
+              <ul class="dropdown-menu" style="font-size: medium">
+                <li>
+                  <a class="nav-link" href="index.html" style="color: black">Auswertung</a>
+                </li>
+                <li>
+                  <a class="nav-link" href="Infoseite.html" style="color: black">Weitere Infos</a>
+                </li>
+                <li>
+                  <a class="nav-link" href="Quellen.html" style="color: black">Quellen</a>
+                </li>
+                <li>
+                  <a class="nav-link" href="Impressum.html" style="color: black">Impressum</a>
+                </li>
+                <li>
+                  <a class="nav-link" href="DSGVO.html" style="color: black">DSGVO</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
       </div>
-    </nav>
-    <div
-      class="container"
-      style="font-family: 'Times New Roman', Times, serif; padding: 6rem"
-    >
-      <div class="row p-2">
-        <div class="col-md-4">
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <h1>RBC</h1>
-              </div>
-              <div class="flip-card-back">
-                <p>
-                  Grenzwert von Männern: 4,5 - 5,9 Mio. pro µl <br />
-                  Grenzwert von Frauen: 4,1 - 5,2 Mio. pro µl
-                </p>
-                <p>
-                  Erythrozyten (rote Blutkörperchen) sind kleine,
-                  scheibenförmige Zellen und der wichtigste Bestandteil unseres
-                  Blutes. Ihre zentrale Aufgabe ist der Transport von Sauerstoff
-                  aus der Lunge in alle Körpergewebe sowie der Rücktransport von
-                  Kohlenstoffdioxid zur Lunge. Ein erwachsener Mensch (ca. 80
-                  kg) besitzt etwa 6 Liter Blut, das rund 24–30 Billionen
-                  Erythrozyten enthält. Der Laborwert „Erys“ im kleinen Blutbild
-                  gibt Auskunft über deren Anzahl und damit über die
-                  Sauerstoffversorgung des Körpers. Zu viele Erythrozyten werden
-                  als Polyglobulie, zu wenige als Anämie bezeichnet.
-                </p>
-              </div>
+    </div>
+  </nav>
+  <div class="container" style="font-family: 'Times New Roman', Times, serif; padding: 6rem">
+    <div class="row p-2">
+      <div class="col-md-4">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h1>RBC</h1>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <h1>Hämoglobin</h1>
-              </div>
-              <div class="flip-card-back">
-                <p>
-                  Grenzwerte von Männern: 12 - 16 g/dl <br />
-                  Grenzwerte von Frauen: 14 - 18 g/dl
-                </p>
-                <p>
-                  Hämoglobin transportiert Sauerstoff von der Lunge in alle
-                  Körperzellen und bringt Kohlendioxid zurück zur Lunge. Dadurch
-                  ist es entscheidend für die Energieversorgung und das tägliche
-                  Wohlbefinden. Ein zu niedriger Hb-Wert (Anämie) entsteht
-                  häufig durch Eisen- oder Vitaminmangel, Blutverlust oder
-                  chronische Erkrankungen. Typische Anzeichen sind Müdigkeit,
-                  Schwäche, Blässe und eine geringere Leistungsfähigkeit.
-                  Erhöhte Hb-Werte (Polyglobulie) können durch
-                  Flüssigkeitsmangel, Rauchen oder Aufenthalt in großer Höhe
-                  entstehen. Auch bestimmte Erkrankungen kommen infrage. Sehr
-                  hohe Werte machen das Blut zähflüssiger und können die
-                  Durchblutung beeinträchtigen. Da der Hb-Wert zeigt, wie gut
-                  der Körper mit Sauerstoff versorgt wird, ist er ein wichtiger
-                  Bestandteil des kleinen Blutbildes und sollte bei
-                  Auffälligkeiten ärztlich abgeklärt werden.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <h1>Leukozyten</h1>
-              </div>
-              <div class="flip-card-back">
-                <p>
-                  Grenzwerte von Männern: 4.000-10.000/µl<br />
-                  Grenzwerte von Frauen: 4.000-10.000/µl
-                </p>
-                <p>
-                  Leukozyten - Weiße Blutkörperchen Leukozyten sind die weißen
-                  Blutkörperchen und ein zentraler Bestandteil des Immunsystems.
-                  Sie erkennen und bekämpfen Krankheitserreger wie Bakterien,
-                  Viren oder Pilze und spielen auch eine wichtige Rolle bei der
-                  Abwehr fremder Stoffe im Körper. Zu niedrige Leukozytenzahl:
-                  Kann auf eine geschwächte Immunabwehr, bestimmte Infektionen,
-                  Knochenmarkerkrankungen oder Nebenwirkungen von Medikamenten
-                  hinweisen. Zu hohe Leukozytenzahl: Häufig ein Hinweis auf
-                  Infektionen, Entzündungen, Stress oder selten auf bestimmte
-                  Blutkrankheiten. Die Leukozytenzahl im Blut gibt wichtige
-                  Hinweise darauf, wie aktiv das Immunsystem arbeitet.
-                  Auffällige Werte können ein Signal dafür sein, dass weitere
-                  Untersuchungen nötig sind, um Infektionen oder Erkrankungen
-                  frühzeitig zu erkennen.
-                </p>
-              </div>
+            <div class="flip-card-back">
+              <p>
+                Grenzwert von Männern: 4,5 - 5,9 Mio. pro µl <br />
+                Grenzwert von Frauen: 4,1 - 5,2 Mio. pro µl
+              </p>
+              <p>
+                Erklärung: Transportieren Sauerstoff zu den Körperzellen und Kohlendioxid zurück zur Lunge.</br>
+                Ernährung: Eisen (rotes Fleisch, Linsen), Vitamin B12 (Fisch, Eier), Folsäure (grünes Gemüse).
+              </p>
             </div>
           </div>
         </div>
       </div>
-      <div class="row p-2">
-        <div class="col-md-4">
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <h1>Thrombozyten</h1>
-              </div>
-              <div class="flip-card-back">
-                <p>
-                  Grenzwerte von Männern: 150.000-380.000/µl <br />
-                  Grenzwerte von Frauen: 150.000-380.000/µl
-                </p>
-                <p>
-                  Thrombozyten – Blutplättchen Thrombozyten sind die
-                  Blutplättchen und entscheidend für die Blutgerinnung. Sie
-                  heften sich an verletzte Blutgefäße und bilden einen Pfropf,
-                  der Blutungen stoppt und die Wundheilung unterstützt. Zu
-                  wenige Thrombozyten: Erhöht das Risiko für Blutungen und kann
-                  auf Erkrankungen des Knochenmarks, Infektionen oder bestimmte
-                  Medikamente hinweisen. Zu viele Thrombozyten: Kann die
-                  Blutgerinnung verstärken und das Risiko für Blutgerinnsel
-                  erhöhen, etwa bei Entzündungen oder bestimmten
-                  Blutkrankheiten. Die Thrombozytenzahl gibt somit wichtige
-                  Hinweise darauf, wie gut der Körper Blutungen stoppen kann und
-                  ob das Gerinnungssystem möglicherweise über- oder unteraktiv
-                  ist.
-                </p>
-              </div>
+      <div class="col-md-4">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h1>Hämoglobin</h1>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <h1>Hämatokrit</h1>
-              </div>
-              <div class="flip-card-back">
-                <p>
-                  Grenzwerte von Männern: 42-50% <br />
-                  Grenzwerte von Frauen: 37-45%
-                </p>
-                <p>
-                  Der Hämatokrit beschreibt den Anteil der roten Blutkörperchen
-                  am gesamten Blutvolumen. Er ist ein wichtiger Wert zur
-                  Beurteilung der Blutdichte und der
-                  Sauerstofftransportfähigkeit des Blutes. Ein zu niedriger
-                  Hämatokrit weist häufig auf eine Blutarmut oder auf akuten
-                  oder chronischen Blutverlust hin. Auch bei
-                  Flüssigkeitsüberladung kann der Wert erniedrigt sein. Ein zu
-                  hoher Hämatokrit bedeutet, dass das Blut stärker konzentriert
-                  ist. Dies kann bei Flüssigkeitsmangel, Rauchen, Aufenthalt in
-                  großer Höhe oder bestimmten Erkrankungen auftreten und das
-                  Risiko für Durchblutungsstörungen erhöhen.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <h1>Hämoglobin-<br> menge pro Erythrozyt</h1>
-              </div>
-              <div class="flip-card-back">
-                <p>
-                  Grenzwerte von Männern: 27-34pg <br />
-                  Grenzwerte von Frauen: 27-34pg
-                </p>
-                <p>
-                  Die Hämoglobinmenge pro Erythrozyt gibt an, wie viel roter
-                  Blutfarbstoff in einer einzelnen roten Blutzelle enthalten
-                  ist. Dieser Wert ist wichtig für die Beurteilung der Qualität
-                  der roten Blutkörperchen. Ein zu niedriger Wert zeigt an, dass
-                  die Erythrozyten zu wenig Hämoglobin enthalten. Dies tritt
-                  häufig bei Eisenmangel auf und führt zu einer verminderten
-                  Sauerstoffversorgung des Körpers. Ein zu hoher Wert bedeutet,
-                  dass die roten Blutkörperchen überdurchschnittlich viel
-                  Hämoglobin enthalten. Dies kann bei Vitamin-B12- oder
-                  Folsäuremangel sowie bei bestimmten Formen der Blutarmut
-                  vorkommen.
-                </p>
-              </div>
+            <div class="flip-card-back">
+              <p>
+                Grenzwerte von Männern: 12 - 16 g/dl <br />
+                Grenzwerte von Frauen: 14 - 18 g/dl
+              </p>
+              <p>
+                Erklärung: Roter Blutfarbstoff, bindet Sauerstoff und sorgt für Energie und Leistungsfähigkeit. <br>
+                Ernährung: Eisen (Spinat, Fleisch), Vitamin C (Orangen) zur besseren Eisenaufnahme.
+              </p>
             </div>
           </div>
         </div>
       </div>
-      <div class="row p-2">
-        <div class="col-md-4">
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <h1>
-                  durchschnittliche Hämoglobinkon- <br />
-                  zentration pro Erythrozyt
-                </h1>
-              </div>
-              <div class="flip-card-back">
-                <p>
-                  Grenzwerte von Männern: 32-36g/dl <br />
-                  Grenzwerte von Frauen: 32-36g/dl
-                </p>
-                <p>
-                  MCHC – Mittlere korpuskuläre Hämoglobinkonzentration Der
-                  MCHC-Wert gibt an, wie viel Hämoglobin im Durchschnitt in
-                  einem roten Blutkörperchen enthalten ist. Damit zeigt er, ob
-                  die Zellen gut mit Hämoglobin gefüllt sind oder eher blass
-                  wirken. Niedriges MCHC: Die roten Blutkörperchen enthalten
-                  weniger Hämoglobin als normal, häufig bei Eisenmangelanämie.
-                  Normales MCHC: Die Hämoglobinkonzentration in den Zellen ist
-                  ausreichend, dennoch kann eine Anämie bestehen. Hohes MCHC:
-                  Selten, kann bei bestimmten Blutkrankheiten auftreten, bei
-                  denen die Zellen übermäßig viel Hämoglobin enthalten. Der
-                  MCHC-Wert hilft zusammen mit anderen Blutwerten, die Ursache
-                  einer Anämie einzuschätzen und die richtige Behandlung zu
-                  planen.
-                </p>
-              </div>
+      <div class="col-md-4">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h1>Leukozyten</h1>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <h1>durchschnittliches Volumen eines Erythrozyts</h1>
-              </div>
-              <div class="flip-card-back">
-                <p>
-                  Obergrenze: 95-98fl<br />
-                  Untergrenze: 95-98fl
-                </p>
-                <p>
-                  MCV – Mittleres Zellvolumen Der MCV-Wert gibt an, wie groß die
-                  roten Blutkörperchen (Erythrozyten) im Durchschnitt sind.
-                  Anhand dieses Wertes lässt sich erkennen, ob die Zellen zu
-                  klein, normal groß oder zu groß sind – ein wichtiger Hinweis
-                  auf mögliche Blut- oder Nährstoffprobleme. Zu kleine
-                  Erythrozyten (niedriges MCV): Häufig ein Hinweis auf
-                  Eisenmangel oder Blutverlust. Normale Größe (normales MCV):
-                  Die Zellen haben normale Größe, dennoch kann eine Anämie
-                  bestehen, z. B. bei akuten Erkrankungen. Zu große Erythrozyten
-                  (hohes MCV): Oft bei Vitamin-B12- oder Folsäuremangel, auch
-                  Lebererkrankungen oder bestimmte Medikamente können den Wert
-                  erhöhen. Der MCV hilft Ärztinnen und Ärzten dabei, die Art der
-                  Anämie einzugrenzen und die Ursache besser einzuschätzen,
-                  sodass gezielt weitere Untersuchungen oder Behandlungen
-                  geplant werden können.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <h1>Retikulozyten</h1>
-              </div>
-              <div class="flip-card-back">
-                <p>
-                  Obergrenze: 3-18 µl<br />
-                  Untergrenze: 3-18µl
-                </p>
-                <p>
-                  Retikulozyten sind junge, noch nicht vollständig ausgereifte
-                  rote Blutkörperchen. Sie entstehen im Knochenmark und zeigen,
-                  wie aktiv die Neubildung von Erythrozyten im Körper ist. Eine
-                  normale Retikulozytenzahl weist auf eine ausgeglichene
-                  Blutbildung hin. Zu wenige Retikulozyten deuten auf eine
-                  gestörte oder verminderte Blutbildung hin. Ursachen können
-                  Erkrankungen des Knochenmarks, Eisenmangel, Vitamin-B12- oder
-                  Folsäuremangel sowie bestimmte Medikamente sein. Zu viele
-                  Retikulozyten treten auf, wenn der Körper vermehrt neue rote
-                  Blutkörperchen bilden muss. Das ist zum Beispiel nach
-                  Blutverlust, bei Blutarmut oder bei einem erhöhten Abbau von
-                  Erythrozyten der Fall.
-                </p>
-              </div>
+            <div class="flip-card-back">
+              <p>
+                Grenzwerte von Männern: 4.000-10.000/µl<br />
+                Grenzwerte von Frauen: 4.000-10.000/µl
+              </p>
+              <p>
+                Erklärung: Teil des Immunsystems, bekämpfen Krankheitserreger.
+                Ernährung: Vitamin C (Obst), Zink (Nüsse), Eiweiß.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </body>
+    <div class="row p-2">
+      <div class="col-md-4">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h1>Thrombozyten</h1>
+            </div>
+            <div class="flip-card-back">
+              <p>
+                Grenzwerte von Männern: 150.000-380.000/µl <br />
+                Grenzwerte von Frauen: 150.000-380.000/µl
+              </p>
+              <p>
+                Erklärung: Wichtig für Blutgerinnung und Wundheilung.
+                Ernährung: Vitamin K (Brokkoli), Omega-3 (Fisch), ausreichend Flüssigkeit.
+
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h1>Hämatokrit</h1>
+            </div>
+            <div class="flip-card-back">
+              <p>
+                Grenzwerte von Männern: 42-50% <br />
+                Grenzwerte von Frauen: 37-45%
+              </p>
+              <p>
+                Erklärung: Anteil der roten Blutkörperchen am Blut, zeigt Blutdichte.
+                Ernährung: Ausreichend trinken, eisenreiche Kost.
+
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h1>Hämoglobin-<br> menge pro Erythrozyt</h1>
+            </div>
+            <div class="flip-card-back">
+              <p>
+                Grenzwerte von Männern: 27-34pg <br />
+                Grenzwerte von Frauen: 27-34pg
+              </p>
+              <p>
+                Erklärung: Zeigt, wie viel Hämoglobin eine rote Blutzelle enthält.
+                Ernährung: Eisen, Vitamin B12, Folsäure.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row p-2">
+      <div class="col-md-4">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h1>
+                durchschnittliche Hämoglobinkon- <br />
+                zentration pro Erythrozyt
+              </h1>
+            </div>
+            <div class="flip-card-back">
+              <p>
+                Grenzwerte von Männern: 32-36g/dl <br />
+                Grenzwerte von Frauen: 32-36g/dl
+              </p>
+              <p>
+                Erklärung: Gibt an, wie gut Erythrozyten mit Hämoglobin gefüllt sind.
+                Ernährung: Eisen, eiweißreiche Lebensmittel
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h1>durchschnittliches Volumen eines Erythrozyts</h1>
+            </div>
+            <div class="flip-card-back">
+              <p>
+                Obergrenze: 95-98fl<br />
+                Untergrenze: 95-98fl
+              </p>
+              <p>
+                Erklärung: Durchschnittliche Größe der roten Blutkörperchen.
+                Ernährung: Eisen (bei niedrig), Vitamin B12 & Folsäure (bei hoch).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h1>Retikulozyten</h1>
+            </div>
+            <div class="flip-card-back">
+              <p>
+                Obergrenze: 3-18 µl<br />
+                Untergrenze: 3-18µl
+              </p>
+              <p>
+                Erklärung: Junge rote Blutkörperchen, zeigen die Blutneubildung an.
+                Ernährung: Eisen, Vitamin B12, Folsäure, genügend Kalorien.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
-
-
-
-
-
-
